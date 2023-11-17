@@ -19,6 +19,7 @@
  
 - フレームワーク
   - ASP.NET Core
+  - .NET MAUI Blazor
   - Blazor Webassembly
  
 - DB
