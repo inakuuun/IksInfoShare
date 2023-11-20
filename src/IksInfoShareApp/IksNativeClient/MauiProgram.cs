@@ -1,4 +1,5 @@
 ﻿using IksNativeClient.Data;
+using IksNativeClient.Logic.Chat;
 using Microsoft.Extensions.Logging;
 
 namespace IksNativeClient
@@ -22,6 +23,11 @@ namespace IksNativeClient
 		builder.Logging.AddDebug();
 #endif
 
+#if WINDOWS
+            builder.Services.AddSingleton<IksNativeClient.Interface.IChatLogic, WindowsChatLogic>();
+#elif ANDROID
+            builder.Services.AddSingleton<IksNativeClient.Interface.IChatLogic, WindowsChatLogic>();
+#endif
             builder.Services.AddSingleton<WeatherForecastService>();
 
             return builder.Build();
