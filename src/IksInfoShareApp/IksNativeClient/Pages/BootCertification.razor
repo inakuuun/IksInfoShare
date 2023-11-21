@@ -3,12 +3,15 @@
 <style>
     .boot_certification {
         width: fit-content;
-        margin: 10% auto;
+        margin: 50px auto 0;
     }
 
         .boot_certification input.text {
             padding: 2px 6px;
             width: 250px;
+        }
+        .boot_certification input.text::placeholder {
+            opacity: .5;
         }
 
         .boot_certification .main_title {
@@ -30,6 +33,7 @@
             border: 1px solid #767676;
             color: #FFF;
             padding: 2px 6px;
+            cursor: pointer;
         }
 
 </style>
@@ -42,10 +46,13 @@
         <input type="password" placeholder="パスワード" class="text" />
     </div>
     <div>
-        <button class="sign_up" @onclick="() => _IChatLogic.Chat()">Sign Up!</button>
+        <button class="sign_up" @onclick="OnSignUp">Sign Up!</button>
     </div>
 </div>
 
 @code {
-
+    private void OnSignUp()
+    {
+        _IChatLogic.Chat();
+    }
 }
