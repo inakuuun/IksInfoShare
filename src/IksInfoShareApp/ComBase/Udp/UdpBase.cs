@@ -1,5 +1,5 @@
 ﻿using ComBase.Threads;
-using MyApp.Tcp;
+using ComBase.Tcp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

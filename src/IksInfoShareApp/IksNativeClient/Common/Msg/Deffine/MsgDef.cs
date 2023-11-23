@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComBase.Msg.Deffine
+namespace IksNativeClient.Common.Msg.Deffine
 {
     /// <summary>
     /// 電文メッセージ定義クラス

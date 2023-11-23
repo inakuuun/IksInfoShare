@@ -1,19 +1,22 @@
-﻿using ComBase.Msg;
-using ComBase.Msg.Deffine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ComBase.Msg;
+using IksNativeClient.Common.Msg.Deffine;
 
-namespace ComBase.Msg.Messages
+namespace IksNativeClient.Common.Msg.Messages
 {
-    public class HelthCheckRes : MsgBase
-    {/// <summary>
-     /// 電文ID
-     /// </summary>
+    /// <summary>
+    /// ヘルスチェック要求メッセージクラス
+    /// </summary>
+    public class HelthCheckReq : MsgBase
+    {
+        /// <summary>
+        /// 電文ID
+        /// </summary>
         public override short MessageId { get => _messageId; }
-        private short _messageId = MsgDef.MSG_HELTHCHECK_RES;
+        private short _messageId = MsgDef.MSG_HELTHCHECK_REQ;
 
         /// <summary>
         /// メッセージ読み取りインスタンス
@@ -35,12 +38,12 @@ namespace ComBase.Msg.Messages
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public HelthCheckRes() : base() { }
+        public HelthCheckReq() : base() { }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public HelthCheckRes(byte[] bytesmessage) : base(bytesmessage) { }
+        public HelthCheckReq(byte[] bytesmessage) : base(bytesmessage) { }
 
         /// <summary>
         /// 送信メッセージをメモリストリームに書き込み

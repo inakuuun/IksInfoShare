@@ -1,5 +1,5 @@
-﻿using IksNativeClient.Data;
-using IksNativeClient.Logic.Chat;
+﻿using IksNativeClient.Common.Logic.Chat;
+using IksNativeClient.Data;
 using Microsoft.Extensions.Logging;
 
 namespace IksNativeClient

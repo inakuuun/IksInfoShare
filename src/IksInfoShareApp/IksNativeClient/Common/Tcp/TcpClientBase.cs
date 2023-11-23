@@ -1,9 +1,8 @@
-﻿using ComBase.Common;
-using ComBase.Events;
+﻿using ComBase.Events;
 using ComBase.Logs;
 using ComBase.Msg;
-using ComBase.Msg.Messages;
-using MyApp.Db.Dao;
+using ComBase.Tcp;
+using IksNativeClient.Common.Msg.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using ComBase.Common;
 using static ComBase.Common.StractDef;
 
-namespace ComBase.Tcp
+namespace IksNativeClient.Common.Tcp
 {
     /// <summary>
     /// TCPクライアント基底クラス

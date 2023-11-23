@@ -2,20 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ComBase.Msg.Deffine;
+using ComBase.Msg;
+using IksNativeClient.Common.Msg.Deffine;
 
-namespace ComBase.Msg.Messages
+namespace IksNativeClient.Common.Msg.Messages
 {
     /// <summary>
-    /// ヘルスチェック要求メッセージクラス
+    /// 初期起動通知要求メッセージクラス
     /// </summary>
-    public class HelthCheckReq : MsgBase
+    public class BootStartReq : MsgBase
     {
         /// <summary>
         /// 電文ID
         /// </summary>
         public override short MessageId { get => _messageId; }
-        private short _messageId = MsgDef.MSG_HELTHCHECK_REQ;
+        private short _messageId = MsgDef.MSG_BOOTSTART_REQ;
+
+        /// <summary>
+        /// ユーザーID
+        /// </summary>
+        public string UserId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// ユーザー名
+        /// </summary>
+        public string UserName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// ユーザーIPアドレス
+        /// </summary>
+        public string UserIp { get; set; } = string.Empty;
 
         /// <summary>
         /// メッセージ読み取りインスタンス
@@ -37,12 +53,20 @@ namespace ComBase.Msg.Messages
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public HelthCheckReq() : base() { }
+        public BootStartReq() : base() { }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public HelthCheckReq(byte[] bytesmessage) : base(bytesmessage) { }
+        public BootStartReq(byte[] bytesmessage) : base(bytesmessage)
+        {
+            if (_msgReader != null)
+            {
+                UserId = _msgReader.RdStr();
+                UserName = _msgReader.RdStr();
+                UserIp = _msgReader.RdStr();
+            }
+        }
 
         /// <summary>
         /// 送信メッセージをメモリストリームに書き込み
@@ -52,6 +76,9 @@ namespace ComBase.Msg.Messages
             if (_msgWriter != null)
             {
                 _msgWriter.WtShort(_messageId);
+                _msgWriter.WtStr(UserId);
+                _msgWriter.WtStr(UserName);
+                _msgWriter.WtStr(UserIp);
             }
         }
 
@@ -63,6 +90,9 @@ namespace ComBase.Msg.Messages
         {
             int size = 0;
             size = GetSize(_messageId, size);
+            size = GetSize(UserId, size);
+            size = GetSize(UserName, size);
+            size = GetSize(UserIp, size);
             return size;
         }
     }

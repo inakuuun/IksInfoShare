@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using static ComBase.Common.StractDef;
 
-namespace ComBase.Init
+namespace IksNativeClient.Common.Init
 {
     /// <summary>
     /// 起動準備クラス
@@ -39,7 +39,7 @@ namespace ComBase.Init
 
                 // データベース実行クラスを生成
                 // ※DB接続情報をDB定義ファイルから取得するため、DB定義ファイル取得後に実施
-                _ = new MyApp.Db.DbControllerFactory(DB.SQLite);
+                _ = new ComBase.Db.DbControllerFactory(DB.SQLite);
             }
             catch (Exception ex)
             {

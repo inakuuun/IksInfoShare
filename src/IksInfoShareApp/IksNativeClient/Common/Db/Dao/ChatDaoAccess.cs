@@ -1,5 +1,6 @@
 ﻿using ComBase.Db;
 using ComBase.Logs;
+using IksNativeClient.Common.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static ComBase.Common.StractDef;
 
-namespace ComBase.Db.Dao
+namespace IksNativeClient.Common.Db.Dao
 {
     public class ChatDaoAccess
     {

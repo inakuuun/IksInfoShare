@@ -10,11 +10,12 @@ using System.IO;
 using System.Net.NetworkInformation;
 using System.Net.Http;
 using ComBase.Events;
-using ComBase.Msg.Messages;
+using IksNativeClient.Common.Msg.Messages;
 using ComBase.Msg;
 using ComBase.Logs;
+using ComBase.Tcp;
 
-namespace ComBase.Tcp
+namespace IksNativeClient.Common.Tcp
 {
     /// <summary>
     /// TCPサーバー基底クラス

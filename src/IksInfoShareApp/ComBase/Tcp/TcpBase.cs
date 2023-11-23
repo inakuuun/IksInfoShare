@@ -1,7 +1,7 @@
 ﻿using ComBase.Msg;
 using ComBase.Threads;
-using MyApp.Events;
-using MyApp.Logs;
+using ComBase.Events;
+using ComBase.Logs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using MyApp.Common;
+﻿using ComBase.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

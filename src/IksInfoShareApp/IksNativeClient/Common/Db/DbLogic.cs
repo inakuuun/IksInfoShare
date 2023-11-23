@@ -1,11 +1,12 @@
-﻿using ComBase.Db.Dao;
+﻿using ComBase.Db;
+using IksNativeClient.Common.Db.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComBase.Db
+namespace IksNativeClient.Common.Db
 {
     /// <summary>
     /// DBロジッククラス
