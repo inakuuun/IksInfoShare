@@ -59,7 +59,7 @@ namespace ComBase.Db
         {
             // SQLite
             _SQLiteConnectionString = PropertyReader.GetProperty(PropertyDef.Property_SQLiteConnectionString);
-            _SQLiteDataSource = PropertyReader.GetProperty(PropertyDef.Property_SQLiteDataSource);
+            _SQLiteDataSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PropertyReader.GetProperty(PropertyDef.Property_SQLiteDataSource));
             _SQLiteVersion = PropertyReader.GetProperty(PropertyDef.Property_SQLiteVersion);
 
             // PostgreSQL

@@ -32,11 +32,14 @@ namespace ComBase.Db
         /// <param name="db">データベース識別子</param>
         public DbControllerFactory(StractDef.DB db)
         {
+            // db格納用ディレクトリ
+            string dbDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db");
+
             // dbディレクトリが存在しない場合は作成
             // 実行環境に生成される
-            if (!Directory.Exists("./db"))
+            if (!Directory.Exists(dbDirectory))
             {
-                Directory.CreateDirectory("./db");
+                Directory.CreateDirectory(dbDirectory);
             }
 
             // DBコントローラー情報生成クラスをインスタンス化
