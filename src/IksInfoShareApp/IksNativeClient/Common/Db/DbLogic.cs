@@ -15,7 +15,12 @@ namespace IksNativeClient.Common.Db
     public class DbLogic : DbLogicBase
     {
         /// <summary>
-        /// チャットDaoアクセスクラス
+        /// ユーザーテーブルDaoアクセスクラス
+        /// </summary>
+        public UsersDaoAccess UsersDaoAccess { get; set; }
+
+        /// <summary>
+        /// チャットテーブルDaoアクセスクラス
         /// </summary>
         public ChatDaoAccess ChatDaoAccess { get; set; }
 
@@ -24,7 +29,16 @@ namespace IksNativeClient.Common.Db
         /// </summary>
         public DbLogic()
         {
+            UsersDaoAccess = new UsersDaoAccess(this);
             ChatDaoAccess = new ChatDaoAccess(this);
+        }
+
+        /// <summary>
+        /// 初回テーブル作成処理
+        /// </summary>
+        public void InitCreateTable()
+        {
+            UsersDaoAccess.CreateTable();
         }
 
         /// <summary>

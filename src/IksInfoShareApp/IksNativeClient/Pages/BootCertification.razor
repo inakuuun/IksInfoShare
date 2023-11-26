@@ -1,4 +1,5 @@
-﻿@inject IksNativeClient.Interface.IChatLogic _IChatLogic;
+﻿@using IksNativeClient.Common.Models;
+@inject IksNativeClient.Interface.IBootCertificationLogic _IBootCertificationLogic;
 
 <style>
     .boot_certification {
@@ -40,10 +41,10 @@
 <div class="boot_certification">
     <h2 class="main_title">Chatty</h2>
     <div class="user">
-        <input type="text" placeholder="ユーザー名" class="text" />
+        <input type="text" @bind-value="_bootCertificationModel.UserName" placeholder="ユーザー名" class="text" />
     </div>
     <div class="pass">
-        <input type="password" placeholder="パスワード" class="text" />
+        <input type="password" @bind-value="_bootCertificationModel.Password" placeholder="パスワード" class="text" />
     </div>
     <div>
         <button class="sign_up" @onclick="OnSignUp">Sign Up!</button>
@@ -51,8 +52,13 @@
 </div>
 
 @code {
+    /// <summary>
+    /// 起動時認証画面モデル
+    /// </summary>
+    private BootCertificationModel _bootCertificationModel = new();
+
     private void OnSignUp()
     {
-        _IChatLogic.Chat();
+        _IBootCertificationLogic.Certification(_bootCertificationModel);
     }
 }

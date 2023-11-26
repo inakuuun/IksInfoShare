@@ -10,6 +10,9 @@ using static ComBase.Common.StractDef;
 
 namespace IksNativeClient.Common.Db.Dao
 {
+    /// <summary>
+    /// チャットテーブルDaoアクセスクラス
+    /// </summary>
     public class ChatDaoAccess
     {
         /// <summary>

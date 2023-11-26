@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IksNativeClient.Common.Logic.Chat
+namespace IksNativeClient.Logic.Chat
 {
-    public class WindowsChatLogic : IChatLogic
+    public class AndroidChatLogic : IChatLogic
     {
         public void Chat()
         {
