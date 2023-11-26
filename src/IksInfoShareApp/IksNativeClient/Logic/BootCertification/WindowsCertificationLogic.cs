@@ -8,20 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NGLB = IksNativeClient.Common.Common.CommonDef;
 
 namespace IksNativeClient.Logic.BootCertification
 {
+    /// <summary>
+    /// Windows：起動時認証ロジッククラス
+    /// </summary>
     public class WindowsCertificationLogic : IBootCertificationLogic
     {
         /// <summary>
         /// DBロジック
         /// </summary>
-        private DbLogic _dbLogic = CommonDef.DbLogic;
+        private DbLogic _dbLogic = NGLB.DbLogic;
 
         /// <summary>
-        /// 
+        /// 起動時認証処理
         /// </summary>
-        /// <param name="bootCertificationModel"></param>
+        /// <param name="bootCertificationModel">起動時認証モデル</param>
         public void Certification(BootCertificationModel bootCertificationModel)
         {
             // ユーザーテーブルBean

@@ -71,7 +71,8 @@ namespace IksNativeClient.Common.Db.Dao
         /// </summary>
         public void UsersInsert(UsersBean usersBean)
         {
-            // 
+            // パラメーターに値を設定しないことで自動インクリメント
+            // https://www.javadrive.jp/sqlite/table/index9.html
             _pObject.SQLCommand((control) =>
             {
                 try

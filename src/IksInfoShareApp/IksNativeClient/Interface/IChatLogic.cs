@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace IksNativeClient.Interface
 {
+    /// <summary>
+    /// チャットロジックインタフェース
+    /// </summary>
     public interface IChatLogic
     {
         void Chat();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IksNativeClient.Common.Models
 {
     /// <summary>
-    /// 起動時認証画面モデル
+    /// 起動時認証モデル
     /// </summary>
     public class BootCertificationModel
     {

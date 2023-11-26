@@ -3,6 +3,7 @@ using IksNativeClient.Data;
 using IksNativeClient.Logic.BootCertification;
 using IksNativeClient.Logic.Chat;
 using Microsoft.Extensions.Logging;
+using NGLB = IksNativeClient.Common.Common.CommonDef;
 
 namespace IksNativeClient
 {
@@ -48,7 +49,7 @@ namespace IksNativeClient
         private static void SystemInit()
         {
             _ = new SystemInit();
-            IksNativeClient.Common.Common.CommonDef.DbLogic.InitCreateTable();
+            NGLB.DbLogic.InitCreateTable();
         }
     }
 }

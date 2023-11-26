@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace IksNativeClient.Logic.Chat
 {
+    /// <summary>
+    /// Android：チャットロジッククラス
+    /// </summary>
     public class AndroidChatLogic : IChatLogic
     {
         public void Chat()
