@@ -1,50 +1,13 @@
 ﻿@using IksNativeClient.Common.Models;
 @inject IksNativeClient.Interface.IBootCertificationLogic _IBootCertificationLogic;
 
-<style>
-    .boot_certification {
-        width: fit-content;
-        margin: 50px auto 0;
-    }
-
-        .boot_certification input.text {
-            padding: 2px 6px;
-            width: 250px;
-        }
-        .boot_certification input.text::placeholder {
-            opacity: .5;
-        }
-
-        .boot_certification .main_title {
-            color: red;
-        }
-
-        .boot_certification .user {
-            margin: 20px 0;
-        }
-
-        .boot_certification .pass {
-            margin-bottom: 20px;
-        }
-        
-        .boot_certification button.sign_up {
-            float: right;
-            background-color: #aeaeae;
-            border-radius: 15px;
-            border: 1px solid #767676;
-            color: #FFF;
-            padding: 2px 6px;
-            cursor: pointer;
-        }
-
-</style>
 <div class="boot_certification">
     <h2 class="main_title">Chatty</h2>
     <div class="user">
-        <input type="text" @bind-value="_bootCertificationModel.UserName" placeholder="ユーザー名" class="text" />
+        <input type="text" @bind-value="_bootCertificationModel.UserName" placeholder="User Name" class="text" />
     </div>
     <div class="pass">
-        <input type="password" @bind-value="_bootCertificationModel.Password" placeholder="パスワード" class="text" />
+        <input type="password" @bind-value="_bootCertificationModel.Password" placeholder="Password" class="text" />
     </div>
     <div>
         <button class="sign_up" @onclick="OnSignUp">Sign Up!</button>

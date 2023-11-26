@@ -1,0 +1,41 @@
+﻿body {
+}
+
+/* ==================================
+    起動時認証画面
+===================================== */
+.boot_certification {
+    width: fit-content;
+    margin: 50px auto 0;
+}
+
+    .boot_certification input.text {
+        padding: 2px 6px;
+        width: 250px;
+    }
+
+        .boot_certification input.text::placeholder {
+            opacity: .5;
+        }
+
+    .boot_certification .main_title {
+        color: red;
+    }
+
+    .boot_certification .user {
+        margin: 20px 0;
+    }
+
+    .boot_certification .pass {
+        margin-bottom: 20px;
+    }
+
+    .boot_certification button.sign_up {
+        float: right;
+        background-color: #aeaeae;
+        border-radius: 15px;
+        border: 1px solid #767676;
+        color: #FFF;
+        padding: 2px 6px;
+        cursor: pointer;
+    }
