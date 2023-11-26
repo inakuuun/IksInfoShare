@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IksNativeClient", "IksNativeClient\IksNativeClient.csproj", "{32D5C341-50A8-4079-9158-2F57148828F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IksNativeClient", "IksNativeClient\IksNativeClient.csproj", "{32D5C341-50A8-4079-9158-2F57148828F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComBase", "ComBase\ComBase.csproj", "{F9E2ADF4-0D9D-445C-8141-6DFA5309B733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComBase", "ComBase\ComBase.csproj", "{F9E2ADF4-0D9D-445C-8141-6DFA5309B733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

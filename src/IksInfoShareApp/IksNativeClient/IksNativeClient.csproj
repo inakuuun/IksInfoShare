@@ -61,10 +61,9 @@
       <None Update="Common\Config\DbProperties.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resources\db\" />
+      <None Update="Resources\db\IksNativeClient.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

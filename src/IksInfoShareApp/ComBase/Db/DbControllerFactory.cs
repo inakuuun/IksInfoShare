@@ -32,15 +32,17 @@ namespace ComBase.Db
         /// <param name="db">データベース識別子</param>
         public DbControllerFactory(StractDef.DB db)
         {
-            // db格納用ディレクトリ
-            string dbDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db");
+            // プロパティ設定で実行環境にSQLiteファイルを配置するようにするため削除
+            // ※後で削除するかも？？
+            //// db格納用ディレクトリ
+            //string dbDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db");
 
-            // dbディレクトリが存在しない場合は作成
-            // 実行環境に生成される
-            if (!Directory.Exists(dbDirectory))
-            {
-                Directory.CreateDirectory(dbDirectory);
-            }
+            //// dbディレクトリが存在しない場合は作成
+            //// 実行環境に生成される
+            //if (!Directory.Exists(dbDirectory))
+            //{
+            //    Directory.CreateDirectory(dbDirectory);
+            //}
 
             // DBコントローラー情報生成クラスをインスタンス化
             DbControllerInfo dbControlInfo = new();
