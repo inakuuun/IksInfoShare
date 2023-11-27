@@ -161,7 +161,10 @@ a, .btn-link {
         color: #777777;
         cursor: pointer;
     }
-
+    /*リストクリック処理でclassにactiveを持たせ、白色にする*/
+        .talk_menu_header .header_ul li.active{
+            color: #DDD;
+        }
         .talk_menu_header .header_ul li:hover {
             border-bottom: 2px solid #ddd;
         }
@@ -174,8 +177,26 @@ a, .btn-link {
 .talk_list_search {
     margin-top: 10px;
 }
-    .talk_list_search .search_text {
-        background-color: #4a4a4a;
+
+.search_input {
+    position:relative;
+}
+
+    .search_input .icon {
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        width: 15px;
+        height: 15px;
+        color: red;
+        background-image: url("../img/search.png");
+        background-size: contain;
+    }
+
+    .search_input .text {
+        min-width: 250px;
         border-radius: 5px;
+        background-color: #4a4a4a;
         padding: 4px 0 4px 30px;
+        color:#DDD;
     }
