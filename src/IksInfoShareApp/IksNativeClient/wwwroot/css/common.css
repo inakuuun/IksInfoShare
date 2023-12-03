@@ -141,40 +141,42 @@ a, .btn-link {
     トーク機能
 ===================================== */
 /*トークメインメニュー*/
-.talk_menu {
+.chat_menu {
     min-height: 100vh;
     background-color: #2d2e30;
     font-size: 0.8rem;
 }
 
-.talk_menu_header{
+.chat_menu_header {
     height: 40px;
 }
 
-.talk_menu_header .header_ul {
-    margin-left: 10px;
-}
-
-    .talk_menu_header .header_ul li {
-        padding: 10px 0 6px;
-        margin: 0 10px 0 0;
-        color: #777777;
-        cursor: pointer;
+    .chat_menu_header .header_ul {
+        margin-left: 10px;
     }
-    /*リストクリック処理でclassにactiveを持たせ、白色にする*/
-        .talk_menu_header .header_ul li.active{
-            color: #DDD;
-        }
-        .talk_menu_header .header_ul li:hover {
-            border-bottom: 2px solid #ddd;
-        }
 
-.talk_menu_main {
+        .chat_menu_header .header_ul li {
+            padding: 10px 0 6px;
+            margin: 0 10px 0 0;
+            color: #777777;
+            cursor: pointer;
+        }
+            /*リストクリック処理でclassにactiveを持たせ、白色にする*/
+            .chat_menu_header .header_ul li.active {
+                color: #DDD;
+            }
+
+            .chat_menu_header .header_ul li:hover {
+                border-bottom: 2px solid #ddd;
+            }
+
+.chat_menu_main {
     margin-left: 10px;
 }
 
-/*トークリスト*/
-.talk_list_search {
+/*チャットリスト*/
+/*検索テキストボックス*/
+.chat_list_search {
     margin-top: 10px;
 }
 
@@ -188,7 +190,6 @@ a, .btn-link {
         top: 8px;
         width: 15px;
         height: 15px;
-        color: red;
         background-image: url("../img/search.png");
         background-size: contain;
     }
