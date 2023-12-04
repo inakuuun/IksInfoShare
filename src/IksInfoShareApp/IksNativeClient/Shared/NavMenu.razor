@@ -8,32 +8,67 @@
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
+    <nav class="nav-menu">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <button class="@_homeButtonCss" @onclick="() => SwitchingNavMenu(ref _homeButtonCss)">
                 <span class="oi oi-home" aria-hidden="true"></span>
-            </NavLink>
+            </button>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
+            <button class="@_plusButtonCss" @onclick="() => SwitchingNavMenu(ref _plusButtonCss)">
                 <span class="oi oi-plus" aria-hidden="true"></span>
-            </NavLink>
+            </button>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
+            <button class="@_listRichButtonCss" @onclick="() => SwitchingNavMenu(ref _listRichButtonCss)">
                 <span class="oi oi-list-rich" aria-hidden="true"></span>
-            </NavLink>
+            </button>
         </div>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
-
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    /// <summary>
+    /// ナビゲーションボタンデフォルトCSS
+    /// </summary>
+    private const string _defaultNavButtonCss = "";
+
+    /// <summary>
+    /// ナビゲーションボタンアクティブ時のCSS
+    /// </summary>
+    private const string _activeNavButtonCss = "active";
+
+    /// <summary>
+    /// HOMEボタン
+    /// </summary>
+    private string _homeButtonCss = _defaultNavButtonCss;
+
+    /// <summary>
+    /// 追加ボタン
+    /// </summary>
+    private string _plusButtonCss = _defaultNavButtonCss;
+
+    /// <summary>
+    /// 設定ボタン
+    /// </summary>
+    private string _listRichButtonCss = _defaultNavButtonCss;
+
+    /// <summary>
+    /// ナビゲーションメニューの切り替え
+    /// </summary>
+    /// <param name="activeCss"></param>
+    private void SwitchingNavMenu(ref string activeCss)
+    {
+        _homeButtonCss = _defaultNavButtonCss;
+        _plusButtonCss = _defaultNavButtonCss;
+        _listRichButtonCss = _defaultNavButtonCss;
+        activeCss = _activeNavButtonCss;
     }
 }
