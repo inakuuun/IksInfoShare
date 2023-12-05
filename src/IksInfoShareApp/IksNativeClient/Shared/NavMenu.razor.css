@@ -2,14 +2,6 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.top-row {
-    height: 3.5rem;
-}
-
-.navbar-brand {
-    font-size: 1.1rem;
-}
-
 .nav-menu {
     flex-direction: column;
 }
@@ -22,11 +14,13 @@
     top: -2px;
 }
 
+.top-row {
+    height: 3.5rem;
+}
+
 .nav-menu .nav-item {
     font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
 }
 
     .nav-menu .nav-item:first-of-type {
@@ -38,7 +32,6 @@
     }
 
     .nav-menu .nav-item button {
-        padding: .5rem 1rem;
         color: #d7d7d7;
         background-color: #1f1f1f;
         border-radius: 4px;
@@ -56,6 +49,11 @@
 
         .nav-menu .nav-item button:hover {
             background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-menu .nav-item .chat_room {
+            background-color: rgba(255,255,255,0.25);
             color: white;
         }
 
