@@ -10,17 +10,17 @@
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="nav-menu">
         <div class="nav-item">
-            <button class="@_homeButtonCss" @onclick="() => SwitchingNavMenu(ref _homeButtonCss)">
+            <button class="@_friendsBtnCss" @onclick="HandleFriendsButtonClick">
                 <span class="oi oi-home" aria-hidden="true"></span>
             </button>
         </div>
         <div class="nav-item">
-            <button class="@_plusButtonCss" @onclick="() => SwitchingNavMenu(ref _plusButtonCss)">
+            <button class="@_chatRoomBtnCss" @onclick="HandleChatRoomButtonClick">
                 <span class="oi oi-plus" aria-hidden="true"></span>
             </button>
         </div>
         <div class="nav-item">
-            <button class="@_listRichButtonCss" @onclick="() => SwitchingNavMenu(ref _listRichButtonCss)">
+            <button class="@_friendAddBtnCss" @onclick="HandleFriendAddButtonClick">
                 <span class="oi oi-list-rich" aria-hidden="true"></span>
             </button>
         </div>
@@ -48,27 +48,71 @@
     /// <summary>
     /// HOMEボタン
     /// </summary>
-    private string _homeButtonCss = _defaultNavButtonCss;
+    private string _friendsBtnCss = _defaultNavButtonCss;
 
     /// <summary>
     /// 追加ボタン
     /// </summary>
-    private string _plusButtonCss = _defaultNavButtonCss;
+    private string _chatRoomBtnCss = _defaultNavButtonCss;
 
     /// <summary>
     /// 設定ボタン
     /// </summary>
-    private string _listRichButtonCss = _defaultNavButtonCss;
+    private string _friendAddBtnCss = _defaultNavButtonCss;
 
     /// <summary>
-    /// ナビゲーションメニューの切り替え
+    /// 友達一覧ボタン押下時処理
+    /// </summary>
+    private void HandleFriendsButtonClick()
+    {
+        // 友達一覧へ遷移
+        ScreenTransition(ScreenDef.SCREEN_ID_FRIENDS);
+        // 友達一覧ボタンをアクティブにする
+        SwitchingNavButtonCss(ref _friendsBtnCss);
+    }
+
+    /// <summary>
+    /// チャットルームボタン押下時処理
+    /// </summary>
+    private void HandleChatRoomButtonClick()
+    {
+        // チャットルームへ遷移
+        ScreenTransition(ScreenDef.SCREEN_ID_CHATROOM);
+        // チャットルームボタンをアクティブにする
+        SwitchingNavButtonCss(ref _chatRoomBtnCss);
+    }
+
+    /// <summary>
+    /// 友達追加ボタン押下時処理
+    /// </summary>
+    private void HandleFriendAddButtonClick()
+    {
+        // 友達追加へ遷移
+        ScreenTransition(ScreenDef.SCREEN_ID_FRIEND_ADD);
+        // 友達追加ボタンをアクティブにする
+        SwitchingNavButtonCss(ref _friendAddBtnCss);
+    }
+
+    /// <summary>
+    /// ナビゲーションメニューのCSS切り替え
+    /// </summary>
+    /// <param name="activeCss">アクティブ対象要素のCSS</param>
+    private void SwitchingNavButtonCss(ref string activeCss)
+    {
+        // ボタンCSS初期化
+        _friendsBtnCss = _defaultNavButtonCss;
+        _chatRoomBtnCss = _defaultNavButtonCss;
+        _friendAddBtnCss = _defaultNavButtonCss;
+        // 対象のナビゲーションメニューをアクティブ化
+        activeCss = _activeNavButtonCss;
+    }
+
+    /// <summary>
+    /// 画面遷移処理
     /// </summary>
     /// <param name="activeCss"></param>
-    private void SwitchingNavMenu(ref string activeCss)
+    private void ScreenTransition(short activeCss)
     {
-        _homeButtonCss = _defaultNavButtonCss;
-        _plusButtonCss = _defaultNavButtonCss;
-        _listRichButtonCss = _defaultNavButtonCss;
-        activeCss = _activeNavButtonCss;
+        // Index.Razor画面の画面遷移処理にコールバック通知
     }
 }
