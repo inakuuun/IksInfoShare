@@ -46,17 +46,17 @@
     private const string _activeNavButtonCss = "active";
 
     /// <summary>
-    /// HOMEボタン
+    /// 友達一覧ボタンCSS
     /// </summary>
     private string _friendsBtnCss = _defaultNavButtonCss;
 
     /// <summary>
-    /// 追加ボタン
+    /// チャットルームボタンCSS
     /// </summary>
     private string _chatRoomBtnCss = _defaultNavButtonCss;
 
     /// <summary>
-    /// 設定ボタン
+    /// 友達追加ボタンCSS
     /// </summary>
     private string _friendAddBtnCss = _defaultNavButtonCss;
 
@@ -65,10 +65,12 @@
     /// </summary>
     private void HandleFriendsButtonClick()
     {
-        // 友達一覧へ遷移
-        ScreenTransition(ScreenDef.SCREEN_ID_FRIENDS);
+        // 友達一覧
+        SwtchingFunction(ScreenDef.SCREEN_ID_FRIENDS);
+        // ナビゲーションメニューボタンCSS初期化処理
+        InitNavButtonCss();
         // 友達一覧ボタンをアクティブにする
-        SwitchingNavButtonCss(ref _friendsBtnCss);
+        _friendsBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
@@ -77,9 +79,11 @@
     private void HandleChatRoomButtonClick()
     {
         // チャットルームへ遷移
-        ScreenTransition(ScreenDef.SCREEN_ID_CHATROOM);
+        SwtchingFunction(ScreenDef.SCREEN_ID_CHATROOM);
+        // ナビゲーションメニューボタンCSS初期化処理
+        InitNavButtonCss();
         // チャットルームボタンをアクティブにする
-        SwitchingNavButtonCss(ref _chatRoomBtnCss);
+        _chatRoomBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
@@ -88,30 +92,28 @@
     private void HandleFriendAddButtonClick()
     {
         // 友達追加へ遷移
-        ScreenTransition(ScreenDef.SCREEN_ID_FRIEND_ADD);
+        SwtchingFunction(ScreenDef.SCREEN_ID_FRIEND_ADD);
+        // ナビゲーションメニューボタンCSS初期化処理
+        InitNavButtonCss();
         // 友達追加ボタンをアクティブにする
-        SwitchingNavButtonCss(ref _friendAddBtnCss);
+        _friendAddBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
-    /// ナビゲーションメニューのCSS切り替え
+    /// ナビゲーションメニューボタンCSS初期化処理
     /// </summary>
-    /// <param name="activeCss">アクティブ対象要素のCSS</param>
-    private void SwitchingNavButtonCss(ref string activeCss)
+    private void InitNavButtonCss()
     {
-        // ボタンCSS初期化
         _friendsBtnCss = _defaultNavButtonCss;
         _chatRoomBtnCss = _defaultNavButtonCss;
         _friendAddBtnCss = _defaultNavButtonCss;
-        // 対象のナビゲーションメニューをアクティブ化
-        activeCss = _activeNavButtonCss;
     }
 
     /// <summary>
-    /// 画面遷移処理
+    /// 機能切り替え
     /// </summary>
     /// <param name="activeCss"></param>
-    private void ScreenTransition(short activeCss)
+    private void SwtchingFunction(short activeCss)
     {
         // Index.Razor画面の画面遷移処理にコールバック通知
     }
