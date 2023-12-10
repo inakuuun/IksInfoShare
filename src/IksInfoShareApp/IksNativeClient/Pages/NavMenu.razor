@@ -10,17 +10,17 @@
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="nav-menu">
         <div class="nav-item">
-            <button class="@_friendsBtnCss" @onclick="HandleFriendsButtonClick">
+            <button class="@_friendBtnCss" @onclick="HandleFriendButtonClick">
                 <span class="oi oi-home" aria-hidden="true"></span>
             </button>
         </div>
         <div class="nav-item">
-            <button class="@_chatRoomBtnCss" @onclick="HandleChatRoomButtonClick">
+            <button class="@_chatBtnCss" @onclick="HandleChatButtonClick">
                 <span class="oi oi-plus" aria-hidden="true"></span>
             </button>
         </div>
         <div class="nav-item">
-            <button class="@_friendAddBtnCss" @onclick="HandleFriendAddButtonClick">
+            <button class="@_userBtnCss" @onclick="HandleUserButtonClick">
                 <span class="oi oi-list-rich" aria-hidden="true"></span>
             </button>
         </div>
@@ -54,55 +54,55 @@
     /// <summary>
     /// 友達一覧ボタンCSS
     /// </summary>
-    private string _friendsBtnCss = _defaultNavButtonCss;
+    private string _friendBtnCss = _defaultNavButtonCss;
 
     /// <summary>
     /// チャットルームボタンCSS
     /// </summary>
-    private string _chatRoomBtnCss = _defaultNavButtonCss;
+    private string _chatBtnCss = _defaultNavButtonCss;
 
     /// <summary>
     /// 友達追加ボタンCSS
     /// </summary>
-    private string _friendAddBtnCss = _defaultNavButtonCss;
+    private string _userBtnCss = _defaultNavButtonCss;
 
     /// <summary>
     /// 友達一覧ボタン押下時処理
     /// </summary>
-    private void HandleFriendsButtonClick()
+    private void HandleFriendButtonClick()
     {
         // 友達一覧に画面切り替え
-        SwtchingFunction(CLDEF.FNC_ID_FRIENDS);
+        SwtchingFunction(CLDEF.FNC_ID_FRIEND);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
         // 友達一覧ボタンをアクティブにする
-        _friendsBtnCss = _activeNavButtonCss;
+        _friendBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
     /// チャットルームボタン押下時処理
     /// </summary>
-    private void HandleChatRoomButtonClick()
+    private void HandleChatButtonClick()
     {
         // チャットルームに画面切り替え
-        SwtchingFunction(CLDEF.FNC_ID_CHATROOM);
+        SwtchingFunction(CLDEF.FNC_ID_CHAT);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
         // チャットルームボタンをアクティブにする
-        _chatRoomBtnCss = _activeNavButtonCss;
+        _chatBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
     /// 友達追加ボタン押下時処理
     /// </summary>
-    private void HandleFriendAddButtonClick()
+    private void HandleUserButtonClick()
     {
         // 友達追加に画面切り替え
-        SwtchingFunction(CLDEF.FNC_ID_FRIEND_ADD);
+        SwtchingFunction(CLDEF.FNC_ID_USER);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
         // 友達追加ボタンをアクティブにする
-        _friendAddBtnCss = _activeNavButtonCss;
+        _userBtnCss = _activeNavButtonCss;
     }
 
     /// <summary>
@@ -110,9 +110,9 @@
     /// </summary>
     private void InitNavButtonCss()
     {
-        _friendsBtnCss = _defaultNavButtonCss;
-        _chatRoomBtnCss = _defaultNavButtonCss;
-        _friendAddBtnCss = _defaultNavButtonCss;
+        _friendBtnCss = _defaultNavButtonCss;
+        _chatBtnCss = _defaultNavButtonCss;
+        _userBtnCss = _defaultNavButtonCss;
     }
 
     /// <summary>

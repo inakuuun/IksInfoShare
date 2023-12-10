@@ -11,11 +11,11 @@ namespace IksNativeClient.Common.Common
     /// </summary>
     public static class ScreenDef
     {
-        /// <summary>機能ID：友達一覧</summary>
-        public const short FNC_ID_FRIENDS = 0;
-        /// <summary>機能ID：チャットルーム</summary>
-        public const short FNC_ID_CHATROOM = 1;
-        /// <summary>機能ID：友達追加</summary>
-        public const short FNC_ID_FRIEND_ADD = 2;
+        /// <summary>機能ID：友達</summary>
+        public const short FNC_ID_FRIEND = 0;
+        /// <summary>機能ID：チャット</summary>
+        public const short FNC_ID_CHAT = 1;
+        /// <summary>機能ID：ユーザー</summary>
+        public const short FNC_ID_USER = 2;
     }
 }
