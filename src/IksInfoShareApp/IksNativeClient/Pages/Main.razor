@@ -5,7 +5,7 @@
 @* TODO：pageクラスとsidebarクラスのCSSを解析して、リファクタリングができればしたい(優先度は低め) *@
 <div class="page">
     <div class="sidebar">
-        <NavMenu SwtchingFunctionCallback="SwtchingFunction"/>
+        <NavMenu SwtchingFunctionCallback="SwtchingFunctionCallBack" />
     </div>
     @if (_activeFunctionId == CLDEF.FNC_ID_FRIENDS)
     {
@@ -28,7 +28,7 @@
     /// </summary>
     protected override void OnInitialized()
     {
-        // 機能切り替え処理
+        // 機能切り替え処理を実施
         SwtchingFunction(CLDEF.FNC_ID_CHATROOM);
         base.OnInitialized();
     }
@@ -39,7 +39,7 @@
     /// <param name="functionId">機能ID</param>
     private void SwtchingFunctionCallBack(short functionId)
     {
-        // 機能切り替え処理を実行
+        // 機能切り替え処理を実施
         SwtchingFunction(functionId);
     }
 
