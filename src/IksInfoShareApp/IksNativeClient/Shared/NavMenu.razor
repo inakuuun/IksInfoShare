@@ -28,6 +28,12 @@
 </div>
 
 @code {
+    /// <summary>
+    /// 画面表示機能切り替えコールバック
+    /// </summary>
+    [Parameter]
+    public EventCallback<short> SwtchingFunctionCallback { get; set; }
+
     private bool collapseNavMenu = true;
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
     private void ToggleNavMenu()
@@ -65,7 +71,7 @@
     /// </summary>
     private void HandleFriendsButtonClick()
     {
-        // 友達一覧
+        // 友達一覧に画面切り替え
         SwtchingFunction(CLDEF.FNC_ID_FRIENDS);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
@@ -78,7 +84,7 @@
     /// </summary>
     private void HandleChatRoomButtonClick()
     {
-        // チャットルームへ遷移
+        // チャットルームに画面切り替え
         SwtchingFunction(CLDEF.FNC_ID_CHATROOM);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
@@ -91,7 +97,7 @@
     /// </summary>
     private void HandleFriendAddButtonClick()
     {
-        // 友達追加へ遷移
+        // 友達追加に画面切り替え
         SwtchingFunction(CLDEF.FNC_ID_FRIEND_ADD);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
@@ -110,11 +116,12 @@
     }
 
     /// <summary>
-    /// 機能切り替え
+    /// 機能切り替え処理
     /// </summary>
-    /// <param name="activeCss"></param>
-    private void SwtchingFunction(short activeCss)
+    /// <param name="functionId">機能ID</param>
+    private async void SwtchingFunction(short functionId)
     {
-        // Index.Razor画面の画面遷移処理にコールバック通知
+        // Main.Razorの機能切り替え処理にコールバック通知
+        await SwtchingFunctionCallback.InvokeAsync(functionId);
     }
 }

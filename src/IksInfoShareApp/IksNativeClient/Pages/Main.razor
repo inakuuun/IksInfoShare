@@ -1,10 +1,55 @@
 ﻿@page "/"
 @using IksNativeClient.Pages.Chat
+@using IksNativeClient.Pages.User
 
 @* TODO：pageクラスとsidebarクラスのCSSを解析して、リファクタリングができればしたい(優先度は低め) *@
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        <NavMenu SwtchingFunctionCallback="SwtchingFunction"/>
     </div>
-    <ChatMainMenu />
+    @if (_activeFunctionId == CLDEF.FNC_ID_FRIENDS)
+    {
+        <UserMainMenu />
+    }
+    else if (_activeFunctionId == CLDEF.FNC_ID_CHATROOM)
+    {
+        <ChatMainMenu />
+    }
 </div>
+
+@code {
+    /// <summary>
+    /// アクティブ機能ID
+    /// </summary>
+    private short _activeFunctionId = -1;
+
+    /// <summary>
+    /// 初期処理
+    /// </summary>
+    protected override void OnInitialized()
+    {
+        // 機能切り替え処理
+        SwtchingFunction(CLDEF.FNC_ID_CHATROOM);
+        base.OnInitialized();
+    }
+
+    /// <summary>
+    /// 機能切り替えコールバック処理
+    /// </summary>
+    /// <param name="functionId">機能ID</param>
+    private void SwtchingFunctionCallBack(short functionId)
+    {
+        // 機能切り替え処理を実行
+        SwtchingFunction(functionId);
+    }
+
+    /// <summary>
+    /// 機能切り替え処理
+    /// </summary>
+    /// <param name="functionId">機能ID</param>
+    private void SwtchingFunction(short functionId)
+    {
+        // アクティブ機能IDをセット
+        _activeFunctionId = functionId;
+    }
+}
