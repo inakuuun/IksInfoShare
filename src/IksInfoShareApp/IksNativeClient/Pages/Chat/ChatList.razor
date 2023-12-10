@@ -1,43 +1,5 @@
 ﻿@inject IksNativeClient.Interface.IChatLogic _IChatLogic;
 
-<style>
-    .chat_list_li{
-        padding-top: 10px;
-    }
-
-        .chat_list_li .component {
-            display: flex;
-        }
-
-            .chat_list_li .component .room_image {
-                width: 50px;
-                background-color: #DDD;
-                border-radius: 70%;
-                margin-right : 10px;
-            }
-
-            .chat_list_li .component .room_content {
-                width: 200px;
-                position: relative;
-            }
-
-                .chat_list_li .component .room_content .chat_room_name {
-                    font-size: 15px;
-                    margin: 0;
-                }
-
-                .chat_list_li .component .room_content .receive_date {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    color: #777777;
-                }
-
-                .chat_list_li .component .room_content .chat_message {
-                    margin: 0;
-                    color: #777777;
-                }
-</style>
 <div class="chat_list">
     <div class="search">
         <div class="search_input">
@@ -65,5 +27,11 @@
 </div>
 
 @code {
-
+    /// <summary>
+    /// 画面レンダリング
+    /// </summary>
+    public void OnRender()
+    {
+        
+    }
 }

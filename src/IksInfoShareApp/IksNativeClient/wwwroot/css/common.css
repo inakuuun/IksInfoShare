@@ -18,6 +18,32 @@ hr {
     margin: 0;
 }
 
+/* ==================================
+    共通クラス
+===================================== */
+/*検索テキストボックス*/
+.search_input {
+    position: relative;
+}
+
+    .search_input .icon {
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        width: 15px;
+        height: 15px;
+        background-image: url("../img/search.png");
+        background-size: contain;
+    }
+
+    .search_input .text {
+        min-width: 250px;
+        border-radius: 5px;
+        background-color: #4a4a4a;
+        padding: 4px 0 4px 30px;
+        color: #DDD;
+    }
+
 /*フレックスボックス*/
 .flex {
     display: flex;
@@ -207,28 +233,42 @@ main {
     margin-right: 10px;
 }
 
-/*検索テキストボックス*/
-.search_input {
-    position:relative;
+.chat_list_li {
+    padding-top: 10px;
 }
 
-    .search_input .icon {
-        position: absolute;
-        left: 10px;
-        top: 8px;
-        width: 15px;
-        height: 15px;
-        background-image: url("../img/search.png");
-        background-size: contain;
+    .chat_list_li .component {
+        display: flex;
     }
 
-    .search_input .text {
-        min-width: 250px;
-        border-radius: 5px;
-        background-color: #4a4a4a;
-        padding: 4px 0 4px 30px;
-        color:#DDD;
-    }
+        .chat_list_li .component .room_image {
+            width: 50px;
+            background-color: #DDD;
+            border-radius: 70%;
+            margin-right: 10px;
+        }
+
+        .chat_list_li .component .room_content {
+            width: 200px;
+            position: relative;
+        }
+
+            .chat_list_li .component .room_content .chat_room_name {
+                font-size: 15px;
+                margin: 0;
+            }
+
+            .chat_list_li .component .room_content .receive_date {
+                position: absolute;
+                top: 0;
+                right: 0;
+                color: #777777;
+            }
+
+            .chat_list_li .component .room_content .chat_message {
+                margin: 0;
+                color: #777777;
+            }
 
 /*チャットリスト*/
 /*検索テキストボックス*/
