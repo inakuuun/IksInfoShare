@@ -22,7 +22,7 @@ namespace IksNativeClient.Common.Db
         /// <summary>
         /// チャットテーブルDaoアクセスクラス
         /// </summary>
-        public ChatDaoAccess ChatDaoAccess { get; set; }
+        public ChatRoomDaoAccess ChatDaoAccess { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -30,7 +30,7 @@ namespace IksNativeClient.Common.Db
         public DbLogic()
         {
             UsersDaoAccess = new UsersDaoAccess(this);
-            ChatDaoAccess = new ChatDaoAccess(this);
+            ChatDaoAccess = new ChatRoomDaoAccess(this);
         }
 
         /// <summary>

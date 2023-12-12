@@ -11,6 +11,6 @@ namespace IksNativeClient.Interface
     /// </summary>
     public interface IChatLogic
     {
-        void Chat();
+        void GetChatList();
     }
 }

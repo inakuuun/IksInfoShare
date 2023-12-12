@@ -14,12 +14,12 @@
                 @* 画像 *@
                 <dt class="room_image"></dt>
                 <dd class="room_content">
-                    @* チャットルーム名 *@
-                    <h4 class="chat_room_name">チャットルーム名</h4>
-                    @* 受信日時 *@
-                    <span class="receive_date">11.22</span>
-                    @* 最新チャットメッセージ *@
-                    <p class="chat_message">最新チャットメッセージ</p>
+                    @* ルーム名 *@
+                    <h4 class="room_name">チャットルーム名</h4>
+                    @* 最新受信日時 *@
+                    <span class="latest_receive_date">11.22</span>
+                    @* 最新メッセージ *@
+                    <p class="latest_message">最新チャットメッセージ</p>
                 </dd>
             </dl>
         </li>
@@ -27,6 +27,11 @@
 </div>
 
 @code {
+    /// <summary>
+    /// チャット一覧モデルリスト
+    /// </summary>
+    private List<ChatListModel> _chatListModelList;
+
     /// <summary>
     /// 画面レンダリング
     /// </summary>

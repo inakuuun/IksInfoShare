@@ -20,9 +20,12 @@ namespace IksNativeClient.Logic.Chat
         /// </summary>
         private DbLogic _dbLogic = NGLB.DbLogic;
 
-        public void Chat()
+        /// <summary>
+        /// チャット一覧取得
+        /// </summary>
+        public void GetChatList()
         {
-            Console.WriteLine("Chatを呼び出しました");
+            _dbLogic.ChatDaoAccess.ChatInsert();
         }
     }
 }

@@ -228,6 +228,7 @@ main {
                     border-bottom: 2px solid #ddd;
                 }
 
+/*チャット一覧*/
 .chat_main_menu_body {
     margin-left: 10px;
     margin-right: 10px;
@@ -253,12 +254,12 @@ main {
             position: relative;
         }
 
-            .chat_list_li .component .room_content .chat_room_name {
+            .chat_list_li .component .room_content .room_name {
                 font-size: 15px;
                 margin: 0;
             }
 
-            .chat_list_li .component .room_content .receive_date {
+            .chat_list_li .component .room_content .latest_receive_date {
                 position: absolute;
                 top: 0;
                 right: 0;
