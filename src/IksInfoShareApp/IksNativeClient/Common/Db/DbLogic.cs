@@ -15,22 +15,22 @@ namespace IksNativeClient.Common.Db
     public class DbLogic : DbLogicBase
     {
         /// <summary>
+        /// 共通Daoアクセスクラス
+        /// </summary>
+        public CommonDaoAccess CommonDaoAccess { get; set; }
+
+        /// <summary>
         /// ユーザーテーブルDaoアクセスクラス
         /// </summary>
         public UsersDaoAccess UsersDaoAccess { get; set; }
-
-        /// <summary>
-        /// チャットテーブルDaoアクセスクラス
-        /// </summary>
-        public ChatRoomDaoAccess ChatDaoAccess { get; set; }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public DbLogic()
         {
+            CommonDaoAccess = new CommonDaoAccess(this);
             UsersDaoAccess = new UsersDaoAccess(this);
-            ChatDaoAccess = new ChatRoomDaoAccess(this);
         }
 
         /// <summary>

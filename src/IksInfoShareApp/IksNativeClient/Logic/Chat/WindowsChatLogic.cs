@@ -25,7 +25,7 @@ namespace IksNativeClient.Logic.Chat
         /// </summary>
         public void GetChatList()
         {
-            _dbLogic.ChatDaoAccess.ChatInsert();
+            _dbLogic.CommonDaoAccess.GetChatList();
         }
     }
 }

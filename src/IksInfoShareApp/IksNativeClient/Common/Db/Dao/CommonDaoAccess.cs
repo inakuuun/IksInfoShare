@@ -15,7 +15,6 @@ namespace IksNativeClient.Common.Db.Dao
     /// </summary>
     /// <remarks>テーブル結合を行う際のSQLを実行するDaoアクセスクラス</remarks>
     public class CommonDaoAccess
-
     {
         /// <summary>
         /// ログファイル名
