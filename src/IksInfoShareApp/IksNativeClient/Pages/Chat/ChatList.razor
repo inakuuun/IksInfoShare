@@ -9,7 +9,8 @@
     </div>
     @* リストコンポーネント作成 *@
     <ul>
-        <li class="chat_list_li">
+        @* TODO：後でOnRenderのonclick処理を消す *@
+        <li class="chat_list_li" @onclick="OnRender">
             <dl class="component">
                 @* 画像 *@
                 <dt class="room_image"></dt>
@@ -37,6 +38,6 @@
     /// </summary>
     public void OnRender()
     {
-        
+        _IChatLogic.GetChatList();
     }
 }

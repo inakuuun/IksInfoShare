@@ -1,6 +1,7 @@
 ﻿using ComBase.Db;
 using ComBase.Logs;
 using IksNativeClient.Common.Db;
+using IksNativeClient.Common.Db.Bean;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,9 @@ namespace IksNativeClient.Common.Db.Dao
         /// <summary>
         /// チャット一覧テーブル取得処理
         /// </summary>
-        public void GetChatList()
+        public List<ChatListBeanEx> GetChatList()
         {
+            List<ChatListBeanEx> chatLlistBeanExList = new();
             _pObject.SQLCommand((control) =>
             {
                 try
@@ -90,13 +92,18 @@ namespace IksNativeClient.Common.Db.Dao
 
                     // 実行結果を取得
                     using var rd = new SqlReader(result);
+                    ChatListBeanEx chatLlistBeanEx;
                     while (rd.Reader.Read())
                     {
-                        short id = rd.ToShort("id");
-                        string name = rd.ToStr("name");
-                        int age = rd.ToInt("age");
-
-                        Console.WriteLine($"ID:{id} 名前:{name}　年齢:{age}");
+                        chatLlistBeanEx = new()
+                        {
+                            RoomId = rd.ToShort("room_id"),
+                            RoomName = rd.ToStr("room_name"),
+                            RoomImage = rd.ToByte("room_image"),
+                            LatestReceiveDate = rd.ToStr("latest_sent_date"),
+                            LatestMessage = rd.ToStr("latest_message")
+                        };
+                        chatLlistBeanExList.Add(chatLlistBeanEx);
                     }
                 }
                 catch (Exception ex)
@@ -104,6 +111,7 @@ namespace IksNativeClient.Common.Db.Dao
                     Log.Trace(_logFileName, LOGLEVEL.ERROR, $"SQL実行時異常 => {ex}");
                 }
             });
+            return chatLlistBeanExList;
         }
     }
 }

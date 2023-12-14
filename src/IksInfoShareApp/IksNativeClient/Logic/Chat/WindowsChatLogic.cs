@@ -1,5 +1,6 @@
 ﻿using IksNativeClient.Common.Common;
 using IksNativeClient.Common.Db;
+using IksNativeClient.Common.Db.Bean;
 using IksNativeClient.Interface;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace IksNativeClient.Logic.Chat
         /// </summary>
         public void GetChatList()
         {
-            _dbLogic.CommonDaoAccess.GetChatList();
+            List<ChatListBeanEx> chatLlistBeanExList = new();
+            chatLlistBeanExList = _dbLogic.CommonDaoAccess.GetChatList();
         }
     }
 }
