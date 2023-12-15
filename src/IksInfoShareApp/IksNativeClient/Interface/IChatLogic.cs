@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IksNativeClient.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace IksNativeClient.Interface
     /// </summary>
     public interface IChatLogic
     {
-        void GetChatList();
+        List<ChatListModel> GetChatList();
     }
 }

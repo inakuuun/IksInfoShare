@@ -7,37 +7,56 @@
             <input type="text" class="text" placeholder="チャットルームとメッセージ検索" />
         </div>
     </div>
-    @* リストコンポーネント作成 *@
-    <ul>
-        @* TODO：後でOnRenderのonclick処理を消す *@
-        <li class="chat_list_li" @onclick="OnRender">
-            <dl class="component">
-                @* 画像 *@
-                <dt class="room_image"></dt>
-                <dd class="room_content">
-                    @* ルーム名 *@
-                    <h4 class="room_name">チャットルーム名</h4>
-                    @* 最新受信日時 *@
-                    <span class="latest_receive_date">11.22</span>
-                    @* 最新メッセージ *@
-                    <p class="latest_message">最新チャットメッセージ</p>
-                </dd>
-            </dl>
-        </li>
-    </ul>
+    <div>
+        @* リストコンポーネント作成 *@
+        <Virtualize Context="chatListModel" Items="@_chatListModelList">
+            <ItemContent>
+                <ul>
+                    @* TODO：後でOnRenderのonclick処理を消す *@
+                    <li class="chat_list_li" @onclick="OnRender">
+                        <dl class="component">
+                            @* 画像 *@
+                            <dt class="room_image"></dt>
+                            <dd class="room_content">
+                                @* ルーム名 *@
+                                <h4 class="room_name">
+                                    @chatListModel.RoomName
+                                </h4>
+                                @* 最新受信日時 *@
+                                <span class="latest_receive_date">
+                                    @chatListModel.LatestReceiveDate
+                                </span>
+                                @* 最新メッセージ *@
+                                <p class="latest_message">
+                                    @chatListModel.LatestMessage
+                                </p>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </ItemContent>
+        </Virtualize>
+    </div>
 </div>
 
 @code {
     /// <summary>
     /// チャット一覧モデルリスト
     /// </summary>
-    private List<ChatListModel> _chatListModelList;
+    private List<ChatListModel> _chatListModelList = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _chatListModelList = _IChatLogic.GetChatList();
+    }
 
     /// <summary>
     /// 画面レンダリング
     /// </summary>
     public void OnRender()
     {
-        _IChatLogic.GetChatList();
+        _chatListModelList = _IChatLogic.GetChatList();
+        this.StateHasChanged();
     }
 }

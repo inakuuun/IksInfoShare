@@ -1,6 +1,7 @@
 ﻿using IksNativeClient.Common.Common;
 using IksNativeClient.Common.Db;
 using IksNativeClient.Common.Db.Bean;
+using IksNativeClient.Common.Models;
 using IksNativeClient.Interface;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,24 @@ namespace IksNativeClient.Logic.Chat
         /// <summary>
         /// チャット一覧取得
         /// </summary>
-        public void GetChatList()
+        public List<ChatListModel> GetChatList()
         {
-            List<ChatListBeanEx> chatLlistBeanExList = new();
-            chatLlistBeanExList = _dbLogic.CommonDaoAccess.GetChatList();
+            List<ChatListModel> chatListModelList = new();
+            var chatLlistBeanExList = _dbLogic.CommonDaoAccess.GetChatList();
+            ChatListModel chatListModel = new();
+            foreach (ChatListBeanEx chatLlistBean in chatLlistBeanExList)
+            {
+                chatListModel = new ChatListModel()
+                {
+                    RoomId = chatLlistBean.RoomId,
+                    RoomImage = chatLlistBean.RoomImage,
+                    RoomName = chatLlistBean.RoomName,
+                    LatestReceiveDate = chatLlistBean.LatestReceiveDate,
+                    LatestMessage = chatLlistBean.LatestMessage,
+                };
+                chatListModelList.Add(chatListModel);
+            }
+            return chatListModelList;
         }
     }
 }

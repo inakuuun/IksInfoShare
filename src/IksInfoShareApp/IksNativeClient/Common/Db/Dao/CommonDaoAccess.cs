@@ -67,24 +67,26 @@ namespace IksNativeClient.Common.Db.Dao
                     br.Add("                ON chat_room.create_user_id = users.user_id ");
                     br.Add("            LEFT JOIN ( ");
                     br.Add("                SELECT");
-                    br.Add("                    room_id");
-                    br.Add("                    , sent_user_id");
-                    br.Add("                    , sent_date");
-                    br.Add("                    , message ");
+                    br.Add("                    cr.room_id");
+                    br.Add("                    , cmh.sent_user_id");
+                    br.Add("                    , cmh.sent_date");
+                    br.Add("                    , cmh.message ");
                     br.Add("                FROM");
-                    br.Add("                    chat_message_history ");
+                    br.Add("                    chat_room cr ");
+                    br.Add("                    INNER JOIN chat_message_history cmh ");
+                    br.Add("                        ON cmh.room_id = cr.room_id ");
                     br.Add("                WHERE");
                     br.Add("                    sent_date = ( ");
                     br.Add("                        SELECT");
                     br.Add("                            MAX(sent_date) ");
                     br.Add("                        FROM");
-                    br.Add("                            chat_message_history ");
+                    br.Add("                            chat_message_history msd_cmh ");
                     br.Add("                        WHERE");
-                    br.Add("                            room_id = :room_id", 1);
+                    br.Add("                            msd_cmh.room_id in (cr.room_id)");
                     br.Add("                    )");
                     br.Add("            ) chat_message_history ");
-                    br.Add("                ON chat_message_history.room_id = chat_room.room_id");
-                    br.Add("            WHERE chat_room.room_id = :room_id", 1);
+                    br.Add("                ON chat_message_history.sent_user_id = users.user_id ");
+                    br.Add("                AND chat_message_history.room_id = chat_room.room_id");
                     br.Add("    );");
 
                     // SQL実行
