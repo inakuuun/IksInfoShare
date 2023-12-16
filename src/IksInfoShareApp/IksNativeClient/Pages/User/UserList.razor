@@ -1,5 +1,36 @@
-﻿<h3>UserList</h3>
-
+﻿@if (_isShow)
+{
+    <h3>UserList</h3>
+}
 @code {
+    /// <summary>
+    /// 画面表示フラグ
+    /// </summary>
+    private bool _isShow = false;
 
+    /// <summary>
+    /// 初期処理
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+    }
+
+    /// <summary>
+    /// 画面非表示
+    /// </summary>
+    public async Task IsNotShow()
+    {
+        _isShow = false;
+        await this.InvokeAsync(this.StateHasChanged);
+    }
+
+    /// <summary>
+    /// 画面レンダリング
+    /// </summary>
+    public async Task OnRender()
+    {
+        _isShow = true;
+        await this.InvokeAsync(this.StateHasChanged);
+    }
 }

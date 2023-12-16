@@ -52,7 +52,7 @@
     private const string _activeNavButtonCss = "active";
 
     /// <summary>
-    /// 友達一覧ボタンCSS
+    /// フレンドボタンCSS
     /// </summary>
     private string _friendBtnCss = _defaultNavButtonCss;
 
@@ -67,15 +67,15 @@
     private string _userBtnCss = _defaultNavButtonCss;
 
     /// <summary>
-    /// 友達一覧ボタン押下時処理
+    /// フレンドボタン押下時処理
     /// </summary>
     private void HandleFriendButtonClick()
     {
-        // 友達一覧に画面切り替え
+        // フレンドに画面切り替え
         SwtchingFunction(CLDEF.FNC_ID_FRIEND);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
-        // 友達一覧ボタンをアクティブにする
+        // フレンドボタンをアクティブにする
         _friendBtnCss = _activeNavButtonCss;
     }
 

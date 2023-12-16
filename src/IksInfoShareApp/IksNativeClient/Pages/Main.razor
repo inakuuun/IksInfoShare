@@ -8,33 +8,38 @@
     <div class="sidebar">
         <NavMenu SwtchingFunctionCallback="SwtchingFunctionCallBack" />
     </div>
-    @if (_activeFunctionId == CLDEF.FNC_ID_FRIEND)
-    {
-        <FriendMainMenu />
-    }
-    else if (_activeFunctionId == CLDEF.FNC_ID_CHAT)
-    {
-        <ChatMainMenu />
-    }
-    else if (_activeFunctionId == CLDEF.FNC_ID_USER)
-    {
-        <ChatMainMenu />
-    }
+
+    <FriendMainMenu @ref="_friendMainMenu" />
+    <ChatMainMenu @ref="_chatMainMenu" />
+    <UserMainMenu @ref="_userMainMenu" />
 </div>
 
 @code {
     /// <summary>
     /// アクティブ機能ID
     /// </summary>
-    private short _activeFunctionId = -1;
+    private short _activeFunctionId = CLDEF.FNC_ID_NONE;
+
+    /// <summary>
+    /// フレンドメインメニューインスタンス
+    /// </summary>
+    private FriendMainMenu _friendMainMenu = new();
+
+    /// <summary>
+    /// チャットメインメニューインスタンス
+    /// </summary>
+    private ChatMainMenu _chatMainMenu = new();
+
+    /// <summary>
+    /// ユーザーメインメニューインスタンス
+    /// </summary>
+    private UserMainMenu _userMainMenu = new();
 
     /// <summary>
     /// 初期処理
     /// </summary>
     protected override void OnInitialized()
     {
-        // 機能切り替え処理を実施
-        SwtchingFunction(CLDEF.FNC_ID_CHAT);
         base.OnInitialized();
     }
 
@@ -56,5 +61,30 @@
     {
         // アクティブ機能IDをセット
         _activeFunctionId = functionId;
+        // 画面レンダリング処理
+        OnRender(functionId);
+    }
+
+    /// <summary>
+    /// 画面レンダリング処理
+    /// </summary>
+    /// <param name="functionId">機能ID</param>
+    private async Task OnRender(short functionId)
+    {
+        await _friendMainMenu.IsNotShow();
+        await _chatMainMenu.IsNotShow();
+        await _userMainMenu.IsNotShow();
+        if (functionId == CLDEF.FNC_ID_FRIEND)
+        {
+            await _friendMainMenu.OnRender();
+        }
+        else if (functionId == CLDEF.FNC_ID_CHAT)
+        {
+            await _chatMainMenu.OnRender();
+        }
+        else if (functionId == CLDEF.FNC_ID_USER)
+        {
+            await _userMainMenu.OnRender();
+        }
     }
 }

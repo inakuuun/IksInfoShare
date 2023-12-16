@@ -1,24 +1,66 @@
 ﻿<div class="chat_main_menu">
     <div class="chat_main_menu_header">
-        <ul class="flex header_ul">
-            <li>
-                <span>すべて</span>
-            </li>
-            <li>
-                <span>友だち</span>
-            </li>
-            <li>
-                <span>グループ</span>
-            </li>
-        </ul>
+        @if (_isUserListActive)
+        {
+            <ul class="flex header_ul">
+                <li>
+                    <span>すべて</span>
+                </li>
+                <li>
+                    <span>友だち</span>
+                </li>
+                <li>
+                    <span>グループ</span>
+                </li>
+            </ul>
+        }
     </div>
     <hr />
     <div class="flex chat_main_menu_body">
-        <UserList />
+        <UserList @ref="UserList" />
         <ChatRoom />
     </div>
 </div>
 
 @code {
+    /// <summary>
+    /// アクティブ画面ID
+    /// </summary>
+    private short _activeWindowId = CLDEF.WIN_ID_USER;
 
+    /// <summary>
+    /// ユーザー一覧アクティブ状態
+    /// </summary>
+    private bool _isUserListActive;
+
+    /// <summary>
+    /// ユーザー一覧インスタンス
+    /// </summary>
+    public UserList UserList = new();
+
+    /// <summary>
+    /// 画面非表示
+    /// </summary>
+    public async Task IsNotShow()
+    {
+        if (_isUserListActive)
+        {
+            _isUserListActive = false;
+            await UserList.IsNotShow();
+            await this.InvokeAsync(this.StateHasChanged);
+        }
+    }
+
+    /// <summary>
+    /// 画面レンダリング
+    /// </summary>
+    public async Task OnRender()
+    {
+        if (_activeWindowId == CLDEF.WIN_ID_USER)
+        {
+            _isUserListActive = true;
+            await UserList.OnRender();
+        }
+        await this.InvokeAsync(this.StateHasChanged);
+    }
 }

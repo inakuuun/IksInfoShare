@@ -1,24 +1,70 @@
 ﻿<div class="chat_main_menu">
     <div class="chat_main_menu_header">
-        <ul class="flex header_ul">
-            <li>
-                <span>すべて</span>
-            </li>
-            <li>
-                <span>友だち</span>
-            </li>
-            <li>
-                <span>グループ</span>
-            </li>
-        </ul>
+        @if (_isChatListActive)
+        {
+            <ul class="flex header_ul">
+                <li>
+                    <span>すべて</span>
+                </li>
+                <li>
+                    <span>フレンド</span>
+                </li>
+                <li>
+                    <span>グループ</span>
+                </li>
+            </ul>
+        }
     </div>
     <hr />
     <div class="flex chat_main_menu_body">
-        <ChatList />
+        <ChatList @ref="ChatList" />
         <ChatRoom />
     </div>
 </div>
-
 @code {
+    /// <summary>
+    /// アクティブ画面ID
+    /// </summary>
+    private short _activeWindowId = CLDEF.WIN_ID_CHAT;
 
+    /// <summary>
+    /// チャット一覧アクティブ状態
+    /// </summary>
+    private bool _isChatListActive;
+
+    /// <summary>
+    /// チャットルームアクティブ状態
+    /// </summary>
+    private bool _isChatRoomActive;
+
+    /// <summary>
+    /// チャット一覧インスタンス
+    /// </summary>
+    public ChatList ChatList = new();
+
+    /// <summary>
+    /// 画面非表示
+    /// </summary>
+    public async Task IsNotShow()
+    {
+        if (_isChatListActive)
+        {
+            _isChatListActive = false;
+            await ChatList.IsNotShow();
+            await this.InvokeAsync(this.StateHasChanged);
+        }
+    }
+
+    /// <summary>
+    /// 画面レンダリング
+    /// </summary>
+    public async Task OnRender()
+    {
+        if (_activeWindowId == CLDEF.WIN_ID_CHAT)
+        {
+            _isChatListActive = true;
+            await ChatList.OnRender();
+        }
+        await this.InvokeAsync(this.StateHasChanged);
+    }
 }

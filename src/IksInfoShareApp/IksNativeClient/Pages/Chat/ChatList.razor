@@ -1,59 +1,79 @@
 ﻿@inject IksNativeClient.Interface.IChatLogic _IChatLogic;
 
-<div class="chat_list">
-    <div class="search">
-        <div class="search_input">
-            <span class="icon"></span>
-            <input type="text" class="text" placeholder="チャットルームとメッセージ検索" />
+@if (_isShow)
+{
+    <div class="chat_list">
+        <div class="search">
+            <div class="search_input">
+                <span class="icon"></span>
+                <input type="text" class="text" placeholder="チャットルームとメッセージ検索" />
+            </div>
+        </div>
+        <div class="chat_list_li">
+            <Virtualize Context="chatListModel" Items="@_chatListModelList">
+                <ItemContent>
+                    <ul>
+                        <li>
+                            <dl class="component">
+                                @* ルーム画像 *@
+                                <dt class="room_image"></dt>
+                                <dd class="room_content">
+                                    @* ルーム名 *@
+                                    <h4 class="room_name">
+                                        @chatListModel.RoomName
+                                    </h4>
+                                    @* 最新受信日時 *@
+                                    <span class="latest_receive_date">
+                                        @chatListModel.LatestReceiveDate
+                                    </span>
+                                    @* 最新メッセージ *@
+                                    <p class="latest_message">
+                                        @chatListModel.LatestMessage
+                                    </p>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </ItemContent>
+            </Virtualize>
         </div>
     </div>
-    <div class="chat_list_li">
-        <Virtualize Context="chatListModel" Items="@_chatListModelList">
-            <ItemContent>
-                <ul>
-                    <li>
-                        <dl class="component">
-                            @* ルーム画像 *@
-                            <dt class="room_image"></dt>
-                            <dd class="room_content">
-                                @* ルーム名 *@
-                                <h4 class="room_name">
-                                    @chatListModel.RoomName
-                                </h4>
-                                @* 最新受信日時 *@
-                                <span class="latest_receive_date">
-                                    @chatListModel.LatestReceiveDate
-                                </span>
-                                @* 最新メッセージ *@
-                                <p class="latest_message">
-                                    @chatListModel.LatestMessage
-                                </p>
-                            </dd>
-                        </dl>
-                    </li>
-                </ul>
-            </ItemContent>
-        </Virtualize>
-    </div>
-</div>
-
+}
 @code {
+    /// <summary>
+    /// 画面表示フラグ
+    /// </summary>
+    private bool _isShow;
+
     /// <summary>
     /// チャット一覧モデルリスト
     /// </summary>
     private List<ChatListModel> _chatListModelList = new();
 
-    protected override void OnInitialized()
+    /// <summary>
+    /// 初期処理
+    /// </summary>
+    protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
-        _chatListModelList = _IChatLogic.GetChatList();
+    }
+
+    /// <summary>
+    /// 画面非表示
+    /// </summary>
+    public async Task IsNotShow()
+    {
+        _isShow = false;
+        await this.InvokeAsync(this.StateHasChanged);
     }
 
     /// <summary>
     /// 画面レンダリング
     /// </summary>
-    public void OnRender()
+    public async Task OnRender()
     {
+        _isShow = true;
         _chatListModelList = _IChatLogic.GetChatList();
+        await this.InvokeAsync(this.StateHasChanged);
     }
 }
