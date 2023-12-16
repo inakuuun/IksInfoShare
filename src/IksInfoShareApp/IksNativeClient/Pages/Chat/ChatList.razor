@@ -7,15 +7,13 @@
             <input type="text" class="text" placeholder="チャットルームとメッセージ検索" />
         </div>
     </div>
-    <div>
-        @* リストコンポーネント作成 *@
+    <div class="chat_list_li">
         <Virtualize Context="chatListModel" Items="@_chatListModelList">
             <ItemContent>
                 <ul>
-                    @* TODO：後でOnRenderのonclick処理を消す *@
-                    <li class="chat_list_li" @onclick="OnRender">
+                    <li>
                         <dl class="component">
-                            @* 画像 *@
+                            @* ルーム画像 *@
                             <dt class="room_image"></dt>
                             <dd class="room_content">
                                 @* ルーム名 *@
@@ -57,6 +55,5 @@
     public void OnRender()
     {
         _chatListModelList = _IChatLogic.GetChatList();
-        this.StateHasChanged();
     }
 }
