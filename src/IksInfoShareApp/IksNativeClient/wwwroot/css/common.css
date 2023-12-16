@@ -236,6 +236,33 @@ a, .btn-link {
     padding-top: 10px;
 }
 
+    /*Google Chrome、Safari、Microsoft Edge対応のスクロールバー*/
+    .chat_list_li::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* スクロールバーの色を透明にする */
+    .chat_list_li::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    /* ホバー時にスクロールバーの色を表示 */
+    .chat_list_li:hover::-webkit-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    /*スクロールバーのトラックを透明にする*/
+    .chat_list_li::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    /* ホバー時にスクロールバーのトラックを表示 */
+    .chat_list_li:hover::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+
     .chat_list_li .component {
         display: flex;
         height: 60px;
