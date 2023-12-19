@@ -9,9 +9,17 @@
         <NavMenu SwtchingFunctionCallback="SwtchingFunctionCallBack" />
     </div>
 
-    <FriendMainMenu @ref="_friendMainMenu" />
-    <ChatMainMenu @ref="_chatMainMenu" />
-    <UserMainMenu @ref="_userMainMenu" />
+    <div class="@_friendDisplayCss">
+        <FriendMainMenu @ref="_friendMainMenu" />
+    </div>
+
+    <div class="@_chatDisplayCss">
+        <ChatMainMenu @ref="_chatMainMenu" />
+    </div>
+
+    <div class="@_userDisplayCss">
+        <UserMainMenu @ref="_userMainMenu" />
+    </div>
 </div>
 
 @code {
@@ -19,6 +27,36 @@
     /// アクティブ機能ID
     /// </summary>
     private short _activeFunctionId = CLDEF.FNC_ID_NONE;
+
+    /// <summary>
+    /// フレンドアクティブ状態
+    /// </summary>
+    private bool _isFriendActive;
+
+    /// <summary>
+    /// チャットアクティブ状態
+    /// </summary>
+    private bool _isChatActive;
+
+    /// <summary>
+    /// ユーザーアクティブ状態
+    /// </summary>
+    private bool _isUserListActive;
+
+    /// <summary>
+    /// フレンド表示切り替えCSS
+    /// </summary>
+    private string _friendDisplayCss => _isFriendActive ? null : "display_none";
+
+    /// <summary>
+    /// チャット表示切り替えCSS
+    /// </summary>
+    private string _chatDisplayCss => _isChatActive ? null : "display_none";
+
+    /// <summary>
+    /// ユーザー表示切り替えCSS
+    /// </summary>
+    private string _userDisplayCss => _isUserListActive ? null : "display_none";
 
     /// <summary>
     /// フレンドメインメニューインスタンス
@@ -38,31 +76,31 @@
     /// <summary>
     /// 初期処理
     /// </summary>
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        await base.OnInitializedAsync();
     }
 
     /// <summary>
     /// 機能切り替えコールバック処理
     /// </summary>
     /// <param name="functionId">機能ID</param>
-    private void SwtchingFunctionCallBack(short functionId)
+    private async Task SwtchingFunctionCallBack(short functionId)
     {
         // 機能切り替え処理を実施
-        SwtchingFunction(functionId);
+        await SwtchingFunction(functionId);
     }
 
     /// <summary>
     /// 機能切り替え処理
     /// </summary>
     /// <param name="functionId">機能ID</param>
-    private void SwtchingFunction(short functionId)
+    private async Task SwtchingFunction(short functionId)
     {
         // アクティブ機能IDをセット
         _activeFunctionId = functionId;
         // 画面レンダリング処理
-        OnRender(functionId);
+        await OnRender(functionId);
     }
 
     /// <summary>
@@ -71,19 +109,22 @@
     /// <param name="functionId">機能ID</param>
     private async Task OnRender(short functionId)
     {
-        await _friendMainMenu.IsNotShow();
-        await _chatMainMenu.IsNotShow();
-        await _userMainMenu.IsNotShow();
+        _isFriendActive = false;
+        _isChatActive = false;
+        _isUserListActive = false;
         if (functionId == CLDEF.FNC_ID_FRIEND)
         {
+            _isFriendActive = true;
             await _friendMainMenu.OnRender();
         }
         else if (functionId == CLDEF.FNC_ID_CHAT)
         {
+            _isChatActive = true;
             await _chatMainMenu.OnRender();
         }
         else if (functionId == CLDEF.FNC_ID_USER)
         {
+            _isUserListActive = true;
             await _userMainMenu.OnRender();
         }
     }

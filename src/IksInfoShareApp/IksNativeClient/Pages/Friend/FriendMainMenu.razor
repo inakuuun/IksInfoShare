@@ -1,19 +1,16 @@
 ﻿<div class="chat_main_menu">
     <div class="chat_main_menu_header">
-        @if (_isFriendListActive)
-        {
-            <ul class="flex header_ul">
-                <li>
-                    <span>すべて</span>
-                </li>
-                <li>
-                    <span>友だち</span>
-                </li>
-                <li>
-                    <span>グループ</span>
-                </li>
-            </ul>
-        }
+        <ul class="flex header_ul">
+            <li>
+                <span>すべて</span>
+            </li>
+            <li>
+                <span>友だち</span>
+            </li>
+            <li>
+                <span>グループ</span>
+            </li>
+        </ul>
     </div>
     <hr />
     <div class="flex chat_main_menu_body">
@@ -21,13 +18,7 @@
         <ChatRoom />
     </div>
 </div>
-
 @code {
-    /// <summary>
-    /// ユーザー一覧アクティブ状態
-    /// </summary>
-    private bool _isFriendListActive;
-
     /// <summary>
     /// フレンド一覧インスタンス
     /// </summary>
@@ -38,7 +29,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        await base.OnInitializedAsync();
     }
 
     /// <summary>
@@ -46,17 +37,12 @@
     /// </summary>
     public async Task IsNotShow()
     {
-        if (_isFriendListActive)
-        {
-            _isFriendListActive = false;
-            await FriendList.IsNotShow();
-            await this.InvokeAsync(this.StateHasChanged);
-        }
+        await FriendList.IsNotShow();
+        await this.InvokeAsync(this.StateHasChanged);
     }
 
     public async Task OnRender()
     {
-        _isFriendListActive = true;
         await FriendList.OnRender();
         await this.InvokeAsync(this.StateHasChanged);
     } 

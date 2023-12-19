@@ -44,6 +44,10 @@ hr {
         color: #DDD;
     }
 
+.display_none{
+    display: none;
+}
+
 /*フレックスボックス*/
 .flex {
     display: flex;
