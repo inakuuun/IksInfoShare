@@ -20,6 +20,11 @@
 </div>
 @code {
     /// <summary>
+    /// フレンド一覧アクティブ状態
+    /// </summary>
+    private bool _isFriendListActive;
+
+    /// <summary>
     /// フレンド一覧インスタンス
     /// </summary>
     public FriendList FriendList = new();
@@ -27,20 +32,16 @@
     /// <summary>
     /// 初期処理
     /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
     }
 
     /// <summary>
-    /// 画面非表示
+    /// 画面レンダリング処理
     /// </summary>
-    public async Task IsNotShow()
-    {
-        await FriendList.IsNotShow();
-        await this.InvokeAsync(this.StateHasChanged);
-    }
-
+    /// <returns></returns>
     public async Task OnRender()
     {
         await FriendList.OnRender();

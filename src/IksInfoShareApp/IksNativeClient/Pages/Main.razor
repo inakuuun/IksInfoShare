@@ -46,17 +46,17 @@
     /// <summary>
     /// フレンド表示切り替えCSS
     /// </summary>
-    private string _friendDisplayCss => _isFriendActive ? null : "display_none";
+    private string _friendDisplayCss => _isFriendActive ? null : CLDEF.DISPLAY_NONE_CSS;
 
     /// <summary>
     /// チャット表示切り替えCSS
     /// </summary>
-    private string _chatDisplayCss => _isChatActive ? null : "display_none";
+    private string _chatDisplayCss => _isChatActive ? null : CLDEF.DISPLAY_NONE_CSS;
 
     /// <summary>
     /// ユーザー表示切り替えCSS
     /// </summary>
-    private string _userDisplayCss => _isUserListActive ? null : "display_none";
+    private string _userDisplayCss => _isUserListActive ? null : CLDEF.DISPLAY_NONE_CSS;
 
     /// <summary>
     /// フレンドメインメニューインスタンス
@@ -76,6 +76,7 @@
     /// <summary>
     /// 初期処理
     /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
@@ -109,9 +110,11 @@
     /// <param name="functionId">機能ID</param>
     private async Task OnRender(short functionId)
     {
+        // アクティブ状態を初期化
         _isFriendActive = false;
         _isChatActive = false;
         _isUserListActive = false;
+        // 画面レンダリング
         if (functionId == CLDEF.FNC_ID_FRIEND)
         {
             _isFriendActive = true;

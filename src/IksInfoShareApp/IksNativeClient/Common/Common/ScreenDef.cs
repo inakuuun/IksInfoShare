@@ -26,5 +26,8 @@ namespace IksNativeClient.Common.Common
         public const short WIN_ID_CHAT = 1;
         /// <summary>機能ID：ユーザー</summary>
         public const short WIN_ID_USER = 2;
+
+        /// <summary>非表示CSS</summary>
+        public const string DISPLAY_NONE_CSS = "display_none";
     }
 }

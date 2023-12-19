@@ -230,10 +230,9 @@ a, .btn-link {
 /*チャット一覧*/
 .chat_main_menu_body {
     margin-left: 10px;
-    margin-right: 10px;
 }
 
-.chat_list_li {
+.chat_list_body {
     /*コンテンツの高さ - ヘッダー要素分の高さ*/
     height: calc(100vh - 82px);
     overflow-y: scroll; /* 縦のスクロールを有効にする */
@@ -241,62 +240,66 @@ a, .btn-link {
 }
 
     /*Google Chrome、Safari、Microsoft Edge対応のスクロールバー*/
-    .chat_list_li::-webkit-scrollbar {
+    .chat_list_body::-webkit-scrollbar {
         width: 8px;
     }
 
     /* スクロールバーの色を透明にする */
-    .chat_list_li::-webkit-scrollbar-thumb {
+    .chat_list_body::-webkit-scrollbar-thumb {
         background-color: transparent;
         border-radius: 5px;
     }
 
     /* ホバー時にスクロールバーの色を表示 */
-    .chat_list_li:hover::-webkit-scrollbar-thumb {
+    .chat_list_body:hover::-webkit-scrollbar-thumb {
         background-color: #888;
     }
 
     /*スクロールバーのトラックを透明にする*/
-    .chat_list_li::-webkit-scrollbar-track {
+    .chat_list_body::-webkit-scrollbar-track {
         background-color: transparent;
     }
 
     /* ホバー時にスクロールバーのトラックを表示 */
-    .chat_list_li:hover::-webkit-scrollbar-track {
+    .chat_list_body:hover::-webkit-scrollbar-track {
         background-color: #f1f1f1;
         border-radius: 5px;
     }
 
-    .chat_list_li .component {
+    .chat_list_body .chat_list_ul {
+        padding-right: 10px;
+    }
+
+    .chat_list_body .component {
         display: flex;
         height: 60px;
     }
 
-        .chat_list_li .component .room_image {
+        .chat_list_body .component .room_image {
             width: 50px;
             background-color: #DDD;
             border-radius: 70%;
             margin-right: 10px;
         }
 
-        .chat_list_li .component .room_content {
+        .chat_list_body .component .room_content {
             width: 200px;
             position: relative;
         }
 
-            .chat_list_li .component .room_content .room_name {
+            .chat_list_body .component .room_content .room_name {
                 font-size: 15px;
                 margin: 0;
             }
 
-            .chat_list_li .component .room_content .latest_receive_date {
+            .chat_list_body .component .room_content .latest_receive_date {
                 position: absolute;
                 top: 0;
                 right: 0;
                 color: #777777;
             }
 
-            .chat_list_li .component .room_content .latest_message {
+            .chat_list_body .component .room_content .latest_message {
                 margin: 0;
                 color: #777777;
             }

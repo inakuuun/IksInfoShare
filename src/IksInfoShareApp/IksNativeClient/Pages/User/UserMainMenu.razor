@@ -21,33 +21,26 @@
 
 @code {
     /// <summary>
-    /// アクティブ画面ID
-    /// </summary>
-    private short _activeWindowId = CLDEF.WIN_ID_USER;
-
-    /// <summary>
     /// ユーザー一覧インスタンス
     /// </summary>
     public UserList UserList = new();
 
     /// <summary>
-    /// 画面非表示
+    /// 初期処理
     /// </summary>
-    public async Task IsNotShow()
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
     {
-        await UserList.IsNotShow();
-        await this.InvokeAsync(this.StateHasChanged);
+        await base.OnInitializedAsync();
     }
 
     /// <summary>
-    /// 画面レンダリング
+    /// 画面レンダリング処理
     /// </summary>
+    /// <returns></returns>
     public async Task OnRender()
     {
-        if (_activeWindowId == CLDEF.WIN_ID_USER)
-        {
-            await UserList.OnRender();
-        }
+        await UserList.OnRender();
         await this.InvokeAsync(this.StateHasChanged);
     }
 }

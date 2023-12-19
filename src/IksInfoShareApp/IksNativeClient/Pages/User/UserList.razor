@@ -1,28 +1,12 @@
-﻿@if (_isShow)
-{
-    <h3>UserList</h3>
-}
+﻿<h3>UserList</h3>
 @code {
-    /// <summary>
-    /// 画面表示フラグ
-    /// </summary>
-    private bool _isShow = false;
-
     /// <summary>
     /// 初期処理
     /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-    }
-
-    /// <summary>
-    /// 画面非表示
-    /// </summary>
-    public async Task IsNotShow()
-    {
-        _isShow = false;
-        await this.InvokeAsync(this.StateHasChanged);
+        await base.OnInitializedAsync();
     }
 
     /// <summary>
@@ -30,7 +14,6 @@
     /// </summary>
     public async Task OnRender()
     {
-        _isShow = true;
         await this.InvokeAsync(this.StateHasChanged);
     }
 }

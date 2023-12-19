@@ -32,29 +32,19 @@
     /// <summary>
     /// 初期処理
     /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
     }
 
     /// <summary>
-    /// 画面非表示
+    /// 画面レンダリング処理
     /// </summary>
-    public async Task IsNotShow()
-    {
-        await ChatList.IsNotShow();
-        await this.InvokeAsync(this.StateHasChanged);
-    }
-
-    /// <summary>
-    /// 画面レンダリング
-    /// </summary>
+    /// <returns></returns>
     public async Task OnRender()
     {
-        if (_activeWindowId == CLDEF.WIN_ID_CHAT)
-        {
-            await ChatList.OnRender();
-        }
+        await ChatList.OnRender();
         await this.InvokeAsync(this.StateHasChanged);
     }
 }
