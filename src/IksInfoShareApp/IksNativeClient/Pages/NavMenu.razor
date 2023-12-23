@@ -62,7 +62,7 @@
     private string _chatBtnCss = _defaultNavButtonCss;
 
     /// <summary>
-    /// 友達追加ボタンCSS
+    /// ユーザーボタンCSS
     /// </summary>
     private string _userBtnCss = _defaultNavButtonCss;
 
@@ -93,15 +93,15 @@
     }
 
     /// <summary>
-    /// 友達追加ボタン押下時処理
+    /// ユーザーボタン押下時処理
     /// </summary>
     private void HandleUserButtonClick()
     {
-        // 友達追加に画面切り替え
+        // ユーザーに画面切り替え
         SwtchingFunction(CLDEF.FNC_ID_USER);
         // ナビゲーションメニューボタンCSS初期化処理
         InitNavButtonCss();
-        // 友達追加ボタンをアクティブにする
+        // ユーザーボタンをアクティブにする
         _userBtnCss = _activeNavButtonCss;
     }
 
