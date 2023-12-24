@@ -57,14 +57,8 @@ h1:focus {
     outline: none;
 }
 
-a, .btn-link {
+a {
     color: #0071c1;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -126,6 +120,71 @@ a, .btn-link {
     .flex-column, .navbar-brand {
         padding-left: env(safe-area-inset-left);
     }
+}
+
+/* ==================================
+    ナビゲーションメニュー
+===================================== */
+.nav_menu {
+    flex-direction: column;
+}
+
+    .nav_menu .nav_item {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+        margin-bottom: 10px;
+    }
+
+        .nav_menu .nav_item:first-of-type {
+            padding-top: 1rem;
+        }
+
+        .nav_menu .nav_item:last-of-type {
+            padding-bottom: 1rem;
+        }
+
+        .nav_menu .nav_item button {
+            width: 2.5rem;
+            height: 3rem;
+            color: #d7d7d7;
+            background-color: #1f1f1f;
+            border-radius: 4px;
+            border: none;
+        }
+
+            .nav_menu .nav_item button.active {
+                background-color: rgba(255,255,255,0.25);
+            }
+
+            .nav_menu .nav_item button:hover {
+                background-color: rgba(255,255,255,0.1);
+            }
+
+/* ==================================
+    機能アイコン
+===================================== */
+.select_friend_icon {
+    background-image: url(../img/select_friend_icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.select_chat_icon {
+    background-image: url(../img/select_chat_icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.select_user_icon {
+    background-image: url(../img/select_user_icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
 }
 
 /* ==================================

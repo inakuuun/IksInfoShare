@@ -8,21 +8,15 @@
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="nav-menu">
-        <div class="nav-item">
-            <button class="@_friendBtnCss" @onclick="HandleFriendButtonClick">
-                <span class="oi oi-home" aria-hidden="true"></span>
-            </button>
+    <nav class="nav_menu">
+        <div class="nav_item">
+            <button class="@_friendBtnCss select_friend_icon" @onclick="HandleFriendButtonClick"></button>
         </div>
-        <div class="nav-item">
-            <button class="@_chatBtnCss" @onclick="HandleChatButtonClick">
-                <span class="oi oi-plus" aria-hidden="true"></span>
-            </button>
+        <div class="nav_item">
+            <button class="@_chatBtnCss select_chat_icon" @onclick="HandleChatButtonClick"></button>
         </div>
-        <div class="nav-item">
-            <button class="@_userBtnCss" @onclick="HandleUserButtonClick">
-                <span class="oi oi-list-rich" aria-hidden="true"></span>
-            </button>
+        <div class="nav_item">
+            <button class="@_userBtnCss select_user_icon" @onclick="HandleUserButtonClick"></button>
         </div>
     </nav>
 </div>
