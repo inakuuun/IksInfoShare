@@ -36,7 +36,7 @@ namespace IksNativeClient
             builder.Services.AddSingleton<IksNativeClient.Interface.IBootCertificationLogic, WindowsCertificationLogic>();
             builder.Services.AddSingleton<IksNativeClient.Interface.IChatLogic, WindowsChatLogic>();
 #elif ANDROID
-            builder.Services.AddSingleton<IksNativeClient.Interface.IChatLogic, AndroidChatLogic>();
+            //builder.Services.AddSingleton<IksNativeClient.Interface.IChatLogic, AndroidChatLogic>();
 #endif
             builder.Services.AddSingleton<WeatherForecastService>();
 
@@ -48,8 +48,11 @@ namespace IksNativeClient
         /// </summary>
         private static void SystemInit()
         {
+            // システムに必要な情報を生成
             _ = new SystemInit();
             NGLB.DbLogic.InitCreateTable();
+            // 初回起動同期処理を実施
+            // 通信クラスのインスタンス化
         }
     }
 }
